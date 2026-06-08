@@ -1,4 +1,4 @@
-# Mohamma
+# Mohammad
 
 👋 Hi, I'm Mohammad
 
