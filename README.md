@@ -1,16 +1,21 @@
-## Hi there 👋
+# Mohamma
 
-<!--
-**mrmohammadarjmand-dev/mrmohammadarjmand-dev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+👋 Hi, I'm Mohammad
 
-Here are some ideas to get you started:
+💻 Beginner Developer
+🌐 Learning HTML, CSS, JavaScript and Python
+🚀 Interested in Web Development and Artificial Intelligence
+📚 Currently improving my programming skills and building projects
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Skills
+- HTML
+- CSS
+- JavaScript
+- Python
+- Git & GitHub
+
+## Contact
+📧 mr.mohammad.arjmand.dev@gmail.com
+
+---
+"Every expert was once a beginner."
