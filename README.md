@@ -1,67 +1,77 @@
-# 👋 Hi, I'm Mohammad
+<h1 align="center">Hi 👋, I'm Mohammad</h1>
+<h3 align="center">💻 Web Developer | 🐍 Python Learner | 🚀 Future Full-Stack Developer</h3>
 
 <p align="center">
-  💻 Passionate Developer • 🌐 Web Enthusiast • 🐍 Python Learner • 🚀 Future Software Engineer
+  🌍 Passionate about Web Development • 🤖 AI Enthusiast • 📚 Lifelong Learner
 </p>
 
 ---
 
 ## 🚀 About Me
 
-✨ Passionate about building modern, responsive, and user-friendly web applications.
-
-💻 Currently learning:
-- 🌐 HTML
-- 🎨 CSS
-- ⚡ JavaScript
-- 🐍 Python
-
-🧠 Interested in:
-- 🤖 Artificial Intelligence
-- 🌍 Web Development
-- 🔥 Open Source
-- 📈 Continuous Learning
-
-🎯 My goal is to become a professional Full-Stack Developer and create projects that make a real impact.
+- 🌱 Currently learning **HTML, CSS, JavaScript & Python**
+- 💻 Building projects to improve my programming skills
+- 🤖 Interested in **Artificial Intelligence**
+- 🔥 Learning Git & GitHub
+- 🎯 Goal: Become a Professional Full-Stack Developer
+- ⚡ I believe that consistency beats talent.
 
 ---
 
 ## 🛠️ Tech Stack
 
-🌐 HTML5  
-🎨 CSS3  
-⚡ JavaScript  
-🐍 Python  
-🔧 Git & GitHub  
-💻 VS Code
+<p align="left">
+<img src="https://skillicons.dev/icons?i=html,css,js,python,git,github,vscode,linux" />
+</p>
 
 ---
 
-## 📚 Currently Working On
+## 📊 GitHub Stats
 
-🚀 Improving programming skills every day  
-💡 Building real-world projects  
-📖 Learning clean code and best practices  
-🌱 Expanding my knowledge in AI & Software Development
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight" height="170">
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight" height="170">
+</p>
 
 ---
 
-## 📬 Contact
+## 🔥 GitHub Streak
+
+<p align="center">
+<img src="https://streak-stats.demolab.com?user=YOUR_USERNAME&theme=tokyonight"/>
+</p>
+
+---
+
+## 🏆 GitHub Trophies
+
+<p align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=YOUR_USERNAME&theme=tokyonight&no-frame=true&row=1&column=6"/>
+</p>
+
+---
+
+## 📈 Contribution Graph
+
+<p align="center">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=tokyo-night"/>
+</p>
+
+---
+
+## 📫 Contact
 
 📧 **mr.mohammad.arjmand.dev@gmail.com**
 
 ---
 
-## 💭 Favorite Quote
+## 💬 Favorite Quote
 
-> **"Every expert was once a beginner. Every pro was once an amateur. Keep coding, keep learning, never stop growing."** 🚀
+> **"Every expert was once a beginner. Every line of code brings you one step closer to mastery."** 🚀
 
 ---
 
-<div align="center">
-
-⭐ Thanks for visiting my profile! ⭐
-
-💙 Happy Coding! 👨‍💻
-
-</div>
+<p align="center">
+⭐ If you like my projects, don't forget to leave a star! ⭐
+</p>
