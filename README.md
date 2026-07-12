@@ -1,5 +1,9 @@
-<h1 align="center">Hi 👋, I'm Mohammad Arjmand</h1>
+# 📊 GitHub Statistics
 
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=mrmohammadarjmand-dev&show_icons=true"/>
+
+<img height="170" src="https://github-readme-stats-fast.vercel.app/api?username=mrmohammadarjmand-dev&show_icons=true&theme=tokyonight"/>
+
+<img height="170" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mrmohammadarjmand-dev&layout=compact&theme=tokyonight"/>
+
 </p>
