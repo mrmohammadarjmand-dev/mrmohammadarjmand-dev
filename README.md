@@ -66,7 +66,7 @@ Python • Telegram Bot API • AI
 
 ---
 
-## 🚗 China Yadak
+## 🚗 China Yadak Saeid
 
 Auto parts store web application.
 
