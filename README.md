@@ -1,9 +1,3 @@
-# 📊 GitHub Statistics
-
 <p align="center">
-
-<img height="170" src="https://github-readme-stats-fast.vercel.app/api?username=mrmohammadarjmand-dev&show_icons=true&theme=tokyonight"/>
-
-<img height="170" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mrmohammadarjmand-dev&layout=compact&theme=tokyonight"/>
-
+<img src="https://skillicons.dev/icons?i=python,html,css,js,php,mysql,git,github,linux,vscode,docker" />
 </p>
