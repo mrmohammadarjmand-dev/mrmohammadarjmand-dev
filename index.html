@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta name="google-site-verification" content="LR1J87n1jvsvX0Nw0Opf_O1Eyg4pF7deQEOuW0_iPN4" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Arjmand | Python + HTML Developer</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1a1a28;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #b347ea;
+            --neon-pink: #ff2d95;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffe600;
+            --text: #e0e0e0;
+            --text-dim: #8888a0;
+            --border: #2a2a3a;
+            --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.2);
+            --glow-purple: 0 0 20px rgba(179, 71, 234, 0.5), 0 0 60px rgba(179, 71, 234, 0.2);
+            --font-mono: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Courier New', monospace;
+            --font-sans: 'Vazirmatn', 'Segoe UI', 'Tahoma', sans-serif;
+            --transition: 0.3s ease;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-cyan) var(--bg);
+            overflow-x: clip;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            position: relative;
+            overflow-x: clip;
+            max-width: 100%;
+        }
+
+        .main-wrapper {
+            position: relative;
+            z-index: 1;
+            overflow-x: clip;
+            max-width: 100%;
+        }
+
+        #particlesCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(10, 10, 15, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .navbar.scrolled {
+            padding: 0.6rem 1.5rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 15, 0.95);
+        }
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: var(--glow-cyan);
+            white-space: nowrap;
+        }
+        .nav-logo span {
+            color: var(--neon-purple);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+        .nav-cta {
+            background: transparent;
+            border: 1.5px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-1px);
+        }
+
+        .section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            z-index: 2;
+            overflow-x: clip;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            word-break: break-word;
+        }
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--neon-green);
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+            word-break: break-word;
+        }
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: var(--neon-cyan);
+            margin: 0 auto;
+            border-radius: 2px;
+            box-shadow: var(--glow-cyan);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7rem 1.5rem 3rem;
+            position: relative;
+            overflow-x: clip;
+        }
+        .hero-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            word-break: break-word;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--neon-green);
+            margin-bottom: 1.5rem;
+            background: rgba(57, 255, 20, 0.05);
+        }
+        .hero-title {
+            font-family: var(--font-sans);
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+        .hero-title .name {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 25px rgba(179, 71, 234, 0.4));
+        }
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+        .hero-subtitle .typing {
+            color: var(--neon-cyan);
+            border-left: 2px solid var(--neon-cyan);
+            padding-left: 6px;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--neon-cyan);
+            color: #000;
+            border: none;
+            box-shadow: var(--glow-cyan);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+        }
+        .btn-outline:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: var(--glow-purple);
+        }
+        .btn-outline-pink {
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+        }
+        .btn-outline-pink:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(255, 45, 149, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .scroll-indicator span {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+        }
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-cyan);
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 8px rgba(0, 240, 255, 0.3);
+            animation: bounceDown 2s ease-in-out infinite;
+        }
+        @keyframes bounceDown {
+            0%,
+            100% {
+                transform: rotate(45deg) translateY(0);
+            }
+            50% {
+                transform: rotate(45deg) translateY(8px);
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .about-avatar {
+            width: 240px;
+            height: 240px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            padding: 3px;
+            margin: 0 auto;
+            animation: floatAvatar 5s ease-in-out infinite;
+        }
+        @keyframes floatAvatar {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        .about-avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 17px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--neon-cyan);
+            text-shadow: var(--glow-cyan);
+        }
+        .about-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+        .about-content .highlight {
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+        .about-content p {
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition);
+        }
+        .stat-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-category {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+        }
+        .skill-category:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.08);
+            transform: translateY(-4px);
+        }
+        .skill-category h4 {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .skill-name {
+            color: #ddd;
+        }
+        .skill-percent {
+            color: var(--neon-cyan);
+        }
+        .skill-bar {
+            height: 6px;
+            background: var(--surface2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            border-radius: 8px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            box-shadow: var(--glow-cyan);
+            transition: width 1.2s ease;
+            width: 0;
+        }
+
+        .terminal-wrapper {
+            background: #0d0d1a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .terminal-header {
+            background: #1a1a2e;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .terminal-dot.red {
+            background: #ff5f57;
+        }
+        .terminal-dot.yellow {
+            background: #ffbd2e;
+        }
+        .terminal-dot.green {
+            background: #28c840;
+        }
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-right: 0.8rem;
+        }
+        .terminal-body {
+            padding: 1.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-height: 350px;
+            overflow-y: auto;
+            color: #c0c0d0;
+            word-break: break-word;
+        }
+        .terminal-body .prompt {
+            color: var(--neon-green);
+        }
+        .terminal-body .cmd {
+            color: #fff;
+        }
+        .terminal-body .output {
+            color: var(--neon-cyan);
+            margin-bottom: 0.6rem;
+        }
+        .terminal-body .string {
+            color: var(--neon-yellow);
+        }
+        .terminal-body .keyword {
+            color: var(--neon-purple);
+        }
+        .terminal-body .func {
+            color: var(--neon-pink);
+        }
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--neon-cyan);
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+            margin-right: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            word-break: break-word;
+        }
+        .project-card:hover {
+            border-color: var(--neon-purple);
+            box-shadow: 0 10px 35px rgba(179, 71, 234, 0.15);
+            transform: translateY(-6px);
+        }
+        .project-card .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .project-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            background: rgba(0, 240, 255, 0.08);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+        }
+        .project-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--neon-purple);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .project-link:hover {
+            color: #fff;
+        }
+
+        .contact-grid {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+        .contact-info p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .contact-link-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.3rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all var(--transition);
+            word-break: break-word;
+        }
+        .contact-link-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.1);
+            transform: translateX(3px);
+        }
+        .contact-link-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+        }
+        .contact-link-icon.github {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .contact-link-icon.email {
+            background: rgba(255, 45, 149, 0.12);
+            color: var(--neon-pink);
+        }
+        .contact-link-icon.telegram {
+            background: rgba(0, 136, 204, 0.15);
+            color: #08c;
+        }
+        .contact-link-text .contact-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            display: block;
+        }
+        .contact-link-text .contact-value {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 2;
+        }
+        .footer p {
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .footer .heart {
+            color: var(--neon-pink);
+            display: inline-block;
+            animation: heartBeat 1.5s infinite;
+        }
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--surface);
+            border: 1px solid var(--neon-green);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            z-index: 9999;
+            box-shadow: 0 8px 30px rgba(57, 255, 20, 0.2);
+            transition: transform 0.35s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.7rem 1rem;
+                justify-content: center;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-avatar {
+                width: 180px;
+                height: 180px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+            .stat-number {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particlesCanvas"></canvas>
+    <div class="toast" id="toast"></div>
+
+    <div class="main-wrapper">
+        <nav class="navbar" id="navbar">
+            <a href="#hero" class="nav-logo">&lt;<span>MR</span>/ARJMAND&gt;</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#skills">مهارت‌ها</a></li>
+                <li><a href="#terminal">ترمینال</a></li>
+                <li><a href="#projects">پروژه‌ها</a></li>
+                <li><a href="#contact">ارتباط</a></li>
+                <li><a href="https://github.com/mrmohammadarjmand-dev" target="_blank" class="nav-cta">گیت‌هاب</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-badge">🐍 PYTHON + HTML DEVELOPER</div>
+                <h1 class="hero-title">
+                    سلام، من<br><span class="name">محمد ارجمند</span> هستم
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="typing" id="typingText"></span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">ارتباط با من</a>
+                    <a href="https://github.com/mrmohammadarjmand-dev" target="_blank" class="btn btn-outline">گیت‌هاب</a>
+                    <a href="https://t.me/mrmohammad_dev" target="_blank" class="btn btn-outline-pink">تلگرام</a>
+                </div>
+            </div>
+            <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+                <span>اسکرول</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">⚡ درباره من</span>
+                    <h2 class="section-title">چه کسی پشت کدهاست؟</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-avatar">
+                        <div class="about-avatar-inner">🐍</div>
+                    </div>
+                    <div class="about-content">
+                        <h3>برنامه‌نویس <span class="highlight">پایتون و HTML</span> با عشق به کدنویسی</h3>
+                        <p>
+                            من <strong>محمد ارجمند</strong> هستم، یه برنامه‌نویس <strong>پایتون و HTML</strong> که عاشق ساختن چیزهای
+                            <span style="color:var(--neon-cyan);">خلاقانه</span> و
+                            <span style="color:var(--neon-purple);">کاربردی</span>‌ام.
+                            از اتوماسیون بگیر تا وب‌اسکرپینگ، بات تلگرام، API و backend رو با پایتون و HTML
+                            انجام می‌دم.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <span class="stat-number" data-count="1">0</span>
+                                <span class="stat-label">سال تجربه</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" data-count="50">0</span>
+                                <span class="stat-label">پروژه انجام‌شده</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">اشتیاق به یادگیری</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">🛠️ مهارت‌ها</span>
+                    <h2 class="section-title">تکنولوژی‌هایی که باهاشون کار می‌کنم</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>🐍 Python Core</h4>
+                        <div class="skill-item"><div class="skill-info"><span>Python 3.x</span><span>95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>Async/IO</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>OOP & Patterns</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🌐 Web & API</h4>
+                        <div class="skill-item"><div class="skill-info"><span>FastAPI / Flask</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>Django</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>REST & GraphQL</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🤖 Automation</h4>
+                        <div class="skill-item"><div class="skill-info"><span>Telegram Bots</span><span>93%</span></div><div class="skill-bar"><div class="skill-fill" data-width="93"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>Web Scraping</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>Selenium</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🎨 Frontend</h4>
+                        <div class="skill-item"><div class="skill-info"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>CSS3 / Flex / Grid</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><span>JavaScript ES6+</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="terminal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">💻 ترمینال</span>
+                    <h2 class="section-title">یه نگاه به کدهای من</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="terminal-wrapper">
+                    <div class="terminal-header">
+                        <div class="terminal-dot red"></div><div class="terminal-dot yellow"></div><div class="terminal-dot green"></div>
+                        <span class="terminal-title">mrmohammad@dev:~</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div><span class="prompt">❯</span> <span class="cmd">python3 --version</span></div>
+                        <div class="output">Python 3.12.0</div>
+                        <div><span class="prompt">❯</span> <span class="cmd">whoami</span></div>
+                        <div class="output">mohammad_arjmand_dev</div>
+                        <div><span class="prompt">❯</span> <span class="cmd">cat about_me.py</span></div>
+                        <div class="output">
+                            <span class="keyword">class</span> <span class="func">Developer</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="func">__init__</span>(<span class="keyword">self</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.name = <span class="string">"Mohammad Arjmand"</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.role = <span class="string">"Python + HTML Developer"</span><br>
+                        </div>
+                        <div><span class="prompt">❯</span> <span class="cmd">echo $MOOD</span></div>
+                        <div class="output">Ready to code! 🔥</div>
+                        <div><span class="prompt">❯</span> <span class="cmd">_</span><span class="terminal-cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">📂 پروژه‌ها</span>
+                    <h2 class="section-title">کارهایی که انجام دادم</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <span class="project-icon">🤖</span>
+                        <h3>ربات تلگرام پیشرفته</h3>
+                        <p>ربات تلگرام همه‌کاره با مدیریت گروه، دانلود مدیا، ترجمه و کلی امکانات دیگه با Python و HTML.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">HTML</span><span class="project-tag">Telegram API</span></div>
+                        <a href="https://github.com/mrmohammadarjmand-dev" target="_blank" class="project-link">🔗 مشاهده در گیت‌هاب →</a>
+                    </div>
+                    <div class="project-card">
+                        <span class="project-icon">🎮</span>
+                        <h3>بازی‌های ساده</h3>
+                        <p>ساخت بازی‌های کوچک و جذاب با Python و Pygame؛ از حدس کلمات تا بازی‌های آرکید.</p>
+                        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Pygame</span></div>
+                        <a href="https://github.com/mrmohammadarjmand-dev" target="_blank" class="project-link">🔗 مشاهده در گیت‌هاب →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">📬 ارتباط با من</span>
+                    <h2 class="section-title">بیا باهم صحبت کنیم!</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>راه‌های ارتباطی</h3>
+                        <p>اگه پروژه‌ای داری یا فقط می‌خوای سلام کنی، از این راه‌ها در ارتباط باش :)</p>
+                        <div class="contact-links">
+                            <a href="https://github.com/mrmohammadarjmand-dev" target="_blank" class="contact-link-card">
+                                <div class="contact-link-icon github">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-link-text"><span class="contact-label">گیت‌هاب</span><span class="contact-value">mrmohammadarjmand-dev</span></div>
+                            </a>
+                            <a href="mailto:mr.mohammad.arjmand.dev@gmail.com" class="contact-link-card" id="emailLink">
+                                <div class="contact-link-icon email">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="M22 4L12 13 2 4"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-link-text"><span class="contact-label">ایمیل</span><span class="contact-value">mr.mohammad.arjmand.dev@gmail.com</span></div>
+                            </a>
+                            <a href="https://t.me/mrmohammad_dev" target="_blank" class="contact-link-card">
+                                <div class="contact-link-icon telegram">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.697 8.01c-.128.57-.464.712-.94.443l-2.596-1.915-1.253 1.206c-.138.138-.254.254-.52.254l.185-2.63 4.786-4.322c.208-.185-.046-.29-.323-.104l-5.912 3.72-2.542-.79c-.554-.173-.566-.554.116-.822l9.95-3.836c.462-.173.866.104.72.822z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-link-text"><span class="contact-label">تلگرام</span><span class="contact-value">@mrmohammad_dev</span></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ساخته شده با <span class="heart">❤️</span> توسط <strong>Mohammad Arjmand</strong> | © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 1.8 + 0.5;
+                this.speedY = Math.random() * 0.5 + 0.15;
+                this.speedX = (Math.random() - 0.5) * 0.25;
+                this.opacity = Math.random() * 0.5 + 0.15;
+                this.hue = Math.random() < 0.5 ? 190 : 280;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y > canvas.height + 15 || this.x < -15 || this.x > canvas.width + 15) {
+                    this.reset();
+                    this.y = -10;
+                }
+                if (this.x < -15) this.x = canvas.width + 15;
+                if (this.x > canvas.width + 15) this.x = -15;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                const color = this.hue === 190 ?
+                    `rgba(0,240,255,${this.opacity})` :
+                    `rgba(179,71,234,${this.opacity})`;
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            const count = Math.min(70, Math.floor(window.innerWidth / 15));
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update();
+                p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const typingText = document.getElementById('typingText');
+        const phrases = ['برنامه‌نویس پایتون و HTML 🐍', 'عاشق کدهای تمیز ✨', 'متخصص automation 🤖', 'سازنده بات تلگرام 💬', 'همیشه در حال یادگیری 📚'];
+        let phraseIndex = 0,
+            charIndex = 0,
+            isDeleting = false;
+
+        function typeEffect() {
+            const current = phrases[phraseIndex];
+            typingText.textContent = current.substring(0, charIndex);
+            if (!isDeleting) {
+                charIndex++;
+                if (charIndex > current.length) { isDeleting = true;
+                    setTimeout(typeEffect, 2000); return; }
+                setTimeout(typeEffect, 80);
+            } else {
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeEffect, 350);
+                } else { setTimeout(typeEffect, 35); }
+            }
+        }
+        typeEffect();
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.skill-fill').forEach(fill => {
+                        fill.style.width = fill.dataset.width + '%';
+                    });
+                    entry.target.querySelectorAll('.stat-number[data-count]').forEach(stat => {
+                        const target = parseInt(stat.dataset.count);
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += target / 35;
+                            if (current >= target) { stat.textContent = target + '+';
+                                clearInterval(timer); } else stat.textContent =
+                                Math.floor(current) + '+';
+                        }, 35);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        revealElements.forEach(el => observer.observe(el));
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._t);
+            toast._t = setTimeout(() => toast.classList.remove('show'), 2800);
+        }
+
+        document.getElementById('emailLink').addEventListener('click', function(e) {
+            const email = 'mr.mohammad.arjmand.dev@gmail.com';
+            if (navigator.clipboard?.writeText) {
+                navigator.clipboard.writeText(email).then(() => showToast('📋 ایمیل کپی شد: ' + email))
+                    .catch(() => {});
+            }
+        });
+
+        let terminalClicked = false;
+        document.getElementById('terminalBody').addEventListener('click', () => {
+            if (!terminalClicked) {
+                terminalClicked = true;
+                const body = document.getElementById('terminalBody');
+                const cursorLine = body.querySelector('.terminal-cursor').parentElement;
+                const newLine = document.createElement('div');
+                newLine.innerHTML = '<span class="prompt">❯</span> <span class="cmd">pip install creativity</span>';
+                const outputLine = document.createElement('div');
+                outputLine.className = 'output';
+                outputLine.textContent = 'Successfully installed creativity-∞.0.0 🎨';
+                body.insertBefore(newLine, cursorLine);
+                body.insertBefore(outputLine, cursorLine);
+                body.scrollTop = body.scrollHeight;
+                setTimeout(() => { terminalClicked = false; }, 3000);
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) { e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+
+        console.log('🐍 Mohammad Arjmand - Portfolio | © 2026');
+    </script>
+</body>
+</html>
